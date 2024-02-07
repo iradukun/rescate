@@ -1,8 +1,5 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:response/custom_icons/emergency_icons.dart';
 import 'package:response/utilities/LocationService.dart';
@@ -30,9 +27,9 @@ class _MapsBodyState extends State<MapsBody> {
   }
 
   //map code:
-  Completer<GoogleMapController> _controller = Completer();
+  final Completer<GoogleMapController> _controller = Completer();
 
-  static const LatLng _center = const LatLng(45.521563, -122.677433);
+  static const LatLng _center = LatLng(45.521563, -122.677433);
 
   final Set<Marker> _markers = {};
 
@@ -54,7 +51,7 @@ class _MapsBodyState extends State<MapsBody> {
         // This marker id can be anything that uniquely identifies each marker.
         markerId: MarkerId(_lastMapPosition.toString()),
         position: _lastMapPosition,
-        infoWindow: InfoWindow(
+        infoWindow: const InfoWindow(
           title: 'Your Current Location',
           snippet: "Mumbai",
         ),
@@ -66,6 +63,7 @@ class _MapsBodyState extends State<MapsBody> {
   void _onCameraMove(CameraPosition position) {
     _lastMapPosition = position.target;
   }
+  
 
   void _onMapCreated(GoogleMapController controller) {
     _controller.complete(controller);

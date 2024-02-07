@@ -8,7 +8,7 @@ class ReusableTextField extends StatefulWidget {
   final Function onChanged;
   final IconData icon;
 
-  ReusableTextField(
+  const ReusableTextField(
       {required this.hintText,
       required this.errorText,
       required this.keyboardType,
